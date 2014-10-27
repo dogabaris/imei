@@ -1,0 +1,1 @@
+﻿Operatörlerin kısa kodlarının kullanımını kolaylaştırmak için android app ye çeviriyoruz.
