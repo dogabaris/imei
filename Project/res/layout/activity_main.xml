@@ -23,7 +23,7 @@
         android:typeface="normal" />
 
     <Button
-        android:id="@+id/ara"
+        android:id="@+id/odemeli_ara"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/button1"
@@ -36,7 +36,7 @@
         android:id="@+id/button1"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_above="@+id/ara"
+        android:layout_above="@+id/odemeli_ara"
         android:layout_alignLeft="@+id/numara"
         android:layout_marginBottom="25dp"
         android:background="@drawable/btn"
@@ -65,5 +65,27 @@
         android:textColor="#51D2B7"
         android:textSize="30sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/gizli_ara"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/odemeli_ara"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/btn"
+        android:enabled="false"
+        android:text="Gizliden Ara" />
+
+    <Button
+        android:id="@+id/listeye_gec"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/gizli_ara"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn"
+        android:drawableRight="@android:drawable/ic_media_play"
+        android:text="Diğer Kısa Kodlar" />
 
 </RelativeLayout>

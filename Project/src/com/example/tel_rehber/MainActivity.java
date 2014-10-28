@@ -19,17 +19,24 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	private static final int PICK_CONTACT_REQUEST = 0;
-	Button btn_rehber_ac,btn_ara;
+	Button btn_rehber_ac,btn_odemeli,btn_gizli,btn_listeye_gec;
 	TextView tv_numara,tv_ad;
 	String operator;
+	
+	Intent i_liste;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		i_liste = new Intent(this,ListeActivity.class);
+		
 		btn_rehber_ac = (Button)findViewById(R.id.button1);
-		btn_ara = (Button)findViewById(R.id.ara);
+		btn_odemeli = (Button)findViewById(R.id.odemeli_ara);
+		btn_gizli = (Button)findViewById(R.id.gizli_ara);
+		btn_listeye_gec = (Button)findViewById(R.id.listeye_gec);
+		
 		tv_numara = (TextView)findViewById(R.id.numara);
 		tv_ad = (TextView)findViewById(R.id.ad);
 		
@@ -46,11 +53,29 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		btn_ara.setOnClickListener(new OnClickListener() {
+		btn_odemeli.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				NumarayiCevir();
+				OdemeliAra();
+			}
+		});
+		
+		btn_gizli.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				GizliAra();
+			}
+		});
+		
+		btn_listeye_gec.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(i_liste);
 			}
 		});
 	}
@@ -73,8 +98,10 @@ public class MainActivity extends Activity {
 	            
 	            tv_numara.setText(number);
 	            tv_ad.setText(name);
-	    		btn_ara.setEnabled(true);
-	    		btn_ara.setBackgroundResource(R.drawable.aktif);
+	            btn_odemeli.setEnabled(true);
+	            btn_gizli.setEnabled(true);
+	            btn_odemeli.setBackgroundResource(R.drawable.aktif);
+	            btn_gizli.setBackgroundResource(R.drawable.aktif);
 	    	}
 	     }
 	}
@@ -85,8 +112,14 @@ public class MainActivity extends Activity {
 		startActivityForResult(intent, PICK_CONTACT_REQUEST);
 	}
 	
-	void NumarayiCevir(){
+	void OdemeliAra(){
 		String phone = OdemeliKodu(tv_numara.getText().toString());
+		Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phone, null));
+		startActivity(intent);
+	}
+	
+	void GizliAra(){
+		String phone = "#31#" +tv_numara.getText().toString();
 		Intent intent = new Intent(Intent.ACTION_CALL, Uri.fromParts("tel", phone, null));
 		startActivity(intent);
 	}
